@@ -1,20 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
+import { StyleSheet, Text, View, SafeAreaView, TextInput } from "react-native";
+import Terminal from "./src/components/Terminal/index";
 
 export default function App() {
+  const [login, setLogin] = useState("");
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Text>{login}</Text>
+
+      <Text>Login: </Text>
+      <TextInput
+        onChange={(e) => setLogin(e.nativeEvent.text)}
+        style={styles.input}
+      />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "rgb(21, 23, 30)",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  input: {
+    width: "80%",
+    backgroundColor: "gray",
   },
 });
